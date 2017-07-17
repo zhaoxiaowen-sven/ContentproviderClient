@@ -4,31 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.example.sven.contentproviderclient.MainActivity">
 
-    <Button
-        android:id="@+id/bt1"
-        android:onClick="onClick"
-        android:text="ContentResolver添加数据"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/bt2"
-        android:onClick="onClick"
-        android:text="ContentResolver删除数据"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/bt3"
-        android:onClick="onClick"
-        android:text="ContentResolver修改数据"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/bt4"
-        android:onClick="onClick"
-        android:text="ContentResolver查询数据"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <include layout="@layout/bt_layout1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="0.25"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <include layout="@layout/bt_layout2" />
+    </LinearLayout>
 </LinearLayout>

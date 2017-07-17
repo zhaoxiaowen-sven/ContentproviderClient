@@ -26,10 +26,10 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt1:
-                //添加数据
-                Random random = new Random();
+                //添加User数据
                 Uri uriInsert = Uri.parse("content://" + AUTHORITY + "/users");
                 ContentValues values = new ContentValues();
+                Random random = new Random();
                 values.put("name", "sven" + random.nextInt(30));
                 values.put("age", random.nextInt(20));
                 values.put("address", "guangzhou");
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.bt4:
-                //查询数据
+                //查询User数据
                 Uri uriQuery = Uri.parse("content://" + AUTHORITY + "/users");
                 Cursor cursor = getContentResolver().query(uriQuery, null, null, null, null);
                 if (cursor != null) {
@@ -55,6 +55,62 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(TAG, "name = " + name + ", age = " + age + ", address = " + address);
                     }
                     cursor.close();
+                }
+                break;
+            case R.id.bt45:
+                Uri uriQuerySingle = Uri.parse("content://" + AUTHORITY + "/users/1");
+                Cursor cursor2 = getContentResolver().query(uriQuerySingle, null, null, null, null);
+                if (cursor2 != null) {
+                    if (cursor2.moveToFirst()) {
+                        String name = cursor2.getString(cursor2.getColumnIndex("name"));
+                        int age = cursor2.getInt(cursor2.getColumnIndex("age"));
+                        String address = cursor2.getString(cursor2.getColumnIndex("address"));
+                        Log.i(TAG, "name = " + name + ", age = " + age + ", address = " + address);
+                    }
+                    cursor2.close();
+                }
+                break;
+
+            case R.id.bt5:
+                Uri uriInsertBook = Uri.parse("content://" + AUTHORITY + "/books");
+                ContentValues values2 = new ContentValues();
+                values2.put("name", "Android");
+                values2.put("author", "sven");
+                values2.put("price", 50);
+                Uri newUriBook = getContentResolver().insert(uriInsertBook, values2);
+                String newIdBook = newUriBook.getPathSegments().get(1);
+                Log.i(TAG, "newId = " + newIdBook);
+                break;
+            case R.id.bt6:
+
+                break;
+            case R.id.bt7:
+
+                break;
+            case R.id.bt8:
+                Uri uriQueryBook = Uri.parse("content://" + AUTHORITY + "/books");
+                Cursor cursor3 = getContentResolver().query(uriQueryBook, null, null, null, null);
+                if (cursor3 != null) {
+                    while (cursor3.moveToNext()) {
+                        String name = cursor3.getString(cursor3.getColumnIndex("name"));
+                        String author = cursor3.getString(cursor3.getColumnIndex("author"));
+                        int price = cursor3.getInt(cursor3.getColumnIndex("price"));
+                        Log.i(TAG, "name = " + name + ", author = " + author + ", price = " + price);
+                    }
+                    cursor3.close();
+                }
+                break;
+            case R.id.bt89:
+                Uri uriQuery2 = Uri.parse("content://" + AUTHORITY + "/books/1");
+                Cursor cursor4 = getContentResolver().query(uriQuery2, null, null, null, null);
+                if (cursor4 != null) {
+                     if (cursor4.moveToFirst()) {
+                        String name = cursor4.getString(cursor4.getColumnIndex("name"));
+                        String author = cursor4.getString(cursor4.getColumnIndex("author"));
+                        int price = cursor4.getInt(cursor4.getColumnIndex("price"));
+                        Log.i(TAG, "name = " + name + ", author = " + author + ", price = " + price);
+                    }
+                    cursor4.close();
                 }
                 break;
             default:
