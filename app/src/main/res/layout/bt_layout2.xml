@@ -38,4 +38,11 @@
         android:text="ContentResolver查询单本Book数据"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt890"
+        android:onClick="onClick"
+        android:text="ContentResolver查询CursorBook数据"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </merge>

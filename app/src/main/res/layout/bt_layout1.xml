@@ -38,4 +38,11 @@
         android:text="ContentResolver查询单个User数据"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt456"
+        android:onClick="onClick"
+        android:text="ContentResolver的call方法"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </merge>

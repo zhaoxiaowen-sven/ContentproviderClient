@@ -2,6 +2,7 @@ package com.example.sven.contentproviderclient;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -70,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     cursor2.close();
                 }
                 break;
-
+            case R.id.bt456:
+                Uri uriCall = Uri.parse("content://" + AUTHORITY + "/");
+                Bundle b = getContentResolver().call(uriCall, "getSharedPreferenceData", null, null);
+                Log.i(TAG, ""+b.get("name"));
+                break;
             case R.id.bt5:
                 Uri uriInsertBook = Uri.parse("content://" + AUTHORITY + "/books");
                 ContentValues values2 = new ContentValues();
@@ -85,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.bt7:
-
+//                getContentResolver().call()
                 break;
             case R.id.bt8:
                 Uri uriQueryBook = Uri.parse("content://" + AUTHORITY + "/books");
@@ -104,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 Uri uriQuery2 = Uri.parse("content://" + AUTHORITY + "/books/1");
                 Cursor cursor4 = getContentResolver().query(uriQuery2, null, null, null, null);
                 if (cursor4 != null) {
-                     if (cursor4.moveToFirst()) {
+                    if (cursor4.moveToFirst()) {
                         String name = cursor4.getString(cursor4.getColumnIndex("name"));
                         String author = cursor4.getString(cursor4.getColumnIndex("author"));
                         int price = cursor4.getInt(cursor4.getColumnIndex("price"));
@@ -113,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                     cursor4.close();
                 }
                 break;
+
             default:
                 break;
         }
